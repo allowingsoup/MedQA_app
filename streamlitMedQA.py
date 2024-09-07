@@ -127,11 +127,11 @@ def question_detail():
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        if st.button("Previous", key="prev_button") and st.session_state.question_index > 0:
+        if st.button("Previous", key=f"prev_button_{st.session_state.question_index}") and st.session_state.question_index > 0:
             st.session_state.question_index -= 1
             st.rerun()
     with col2:
-        if st.button("Submit", key="submit_button"):
+        if st.button("Submit", key=f"submit_button_{st.session_state.question_index}"):
             correct_answer = question['answer']
             is_correct = user_answer.split(':')[0].strip() == correct_answer
             st.session_state.user_answers[st.session_state.question_index] = user_answer.split(':')[0].strip()
@@ -140,7 +140,7 @@ def question_detail():
             else:
                 st.error(f"Incorrect. The correct answer is {correct_answer}.")
     with col3:
-        if st.button("Next", key="next_button"):
+        if st.button("Next", key=f"next_button_{st.session_state.question_index}"):
             if st.session_state.question_index < len(st.session_state.selected_questions) - 1:
                 st.session_state.question_index += 1
             else:
