@@ -145,7 +145,7 @@ def question_detail():
                 st.session_state.question_index += 1
             else:
                 st.session_state.question_index = len(st.session_state.selected_questions)
-            st.rerun()
+            #st.rerun()
 
 def quiz_summary():
     st.header("Quiz Summary")
