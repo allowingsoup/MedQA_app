@@ -37,7 +37,7 @@ def load_questions_from_json(file_path):
     return questions
 
 # Initialize the question bank with data from the JSON file
-questions_data = load_questions_from_json(r'C:\Users\krkni\.vscode\Scripts\MedQA_BERT_tagged.json')
+questions_data = load_questions_from_json(r'MedQA_BERT_tagged.json')
 question_bank = QuestionBank(questions_data)
 
 # Initialize session state
