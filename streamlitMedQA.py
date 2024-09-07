@@ -37,7 +37,7 @@ def load_questions_from_json(file_path):
     return questions
 
 # Initialize the question bank with data from the JSON file
-questions_data = load_questions_from_json(r'MedQA_BERT_tagged.json')
+questions_data = load_questions_from_json(r'C:\Users\krkni\.vscode\Scripts\MedQA_BERT_tagged.json')
 question_bank = QuestionBank(questions_data)
 
 # Initialize session state
@@ -144,7 +144,7 @@ def question_detail():
             if st.session_state.question_index < len(st.session_state.selected_questions) - 1:
                 st.session_state.question_index += 1
             else:
-                st.session_state.question_index = len(st.session_state.selected_questions)
+                st.session_state.question_index += 1  # Move to the summary page
             st.rerun()
 
 def quiz_summary():
