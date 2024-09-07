@@ -129,7 +129,7 @@ def question_detail():
     with col1:
         if st.button("Previous", key="prev_button") and st.session_state.question_index > 0:
             st.session_state.question_index -= 1
-            #st.rerun()
+            st.rerun()
     with col2:
         if st.button("Submit", key="submit_button"):
             correct_answer = question['answer']
