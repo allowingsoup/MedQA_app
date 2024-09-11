@@ -41,8 +41,6 @@ questions_data = load_questions_from_json(r'MedQA_BERT_tagged.json')
 question_bank = QuestionBank(questions_data)
 
 # Initialize session state
-if 'user_authenticated' not in st.session_state:
-    st.session_state.user_authenticated = False
 if 'questions' not in st.session_state:
     st.session_state.questions = []
 if 'question_index' not in st.session_state:
@@ -55,26 +53,12 @@ if 'selected_questions' not in st.session_state:
 def main():
     st.title("Quiz Application")
 
-    if not st.session_state.user_authenticated:
-        login_view()
-    elif not st.session_state.selected_questions:
+    if not st.session_state.selected_questions:
         tag_list()
     elif st.session_state.question_index < len(st.session_state.selected_questions):
         question_detail()
     else:
         quiz_summary()
-
-def login_view():
-    st.header("Login")
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    
-    if st.button("Login", key="login_button"):
-        if username == "admin" and password == "password":
-            st.session_state.user_authenticated = True
-            st.success("Logged in successfully!")
-        else:
-            st.error("Invalid credentials")
 
 def tag_list():
     st.header("Select Tags")
